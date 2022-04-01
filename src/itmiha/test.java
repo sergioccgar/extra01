@@ -152,42 +152,7 @@ public class test extends Main {
             }
         }
         System.out.println("La descomposición factorial tiene valores repetidos: " + hayRepes(c));
-        // System.out.println("Los números It-Miha que buscas son:");
         List<Integer> mix = new ArrayList<Integer>();
-        // mix.add(10);
-        // mix.add(1);
-        // mix.add(2);
-        // mix.add(3);
-        // mix.add(4);
-        // mix.add(5);
-        // mix.add(6);
-        // mix.add(7);
-        // mix.add(8);
-        // mix.add(9);
-        // mix.add(10);
-        // mix = findMihas(getLastItMiha(mix), mix);
-        // for (int i = 0; i < mix.size(); i++){
-        //     if (i+1 == mix.size()) {
-        //         System.out.println(mix.get(i) + ".");
-        //     } else {
-        //         System.out.print(mix.get(i) + ", ");
-        //     }
-        // }
-        // mix.clear();
-        // mix.add(5);
-        // mix.add(1);
-        // mix.add(2);
-        // mix.add(4);
-        // mix.add(12);
-        // mix.add(371);
-        // mix = findMihas(getLastItMiha(mix), mix);
-        // for (int i = 0; i < mix.size(); i++){
-        //     if (i+1 == mix.size()) {
-        //         System.out.println(mix.get(i) + ".");
-        //     } else {
-        //         System.out.print(mix.get(i) + ", ");
-        //     }
-        // }
         System.out.println("Los primeros 10 números it-miha son: ");
         mix = findFirstnMihas(10);
         for (int i = 0; i < mix.size(); i++){
