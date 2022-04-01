@@ -17,13 +17,18 @@ public class Main {
     }
 
     /**
-     * Método que revisa cuál es el número It-Miha más alto que buscamos.
+     * Método que revisa cuál es el número It-Miha más alto que buscamos. No
+     * considera el primer número, pues es el número de casos que buscaremos.
+     * lo guardamos en una variable primero para dejar al final la lista sin
+     * cambios.
      *
      * @param a Lista a revisar
      */
     public static Integer getLastItMiha(List <Integer> a){
+        Integer numCasos = a.get(0);
         a.remove(0);
         Integer max = Collections.max(a);
+        a.add(0,numCasos);
         return max;
     }
 

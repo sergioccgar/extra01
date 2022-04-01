@@ -21,5 +21,13 @@ public class test extends Main {
             }
         }
         System.out.println("El número It-Miha más alto que buscas es el " + getLastItMiha(a) + "° número It-Miha");
+        System.out.println("La lista es:");
+        for (int i = 0; i < a.size(); i++){
+            if (i+1 == a.size()) {
+                System.out.println(a.get(i) + ".");
+            } else {
+                System.out.print(a.get(i) + ", ");
+            }
+        }
     }
 }
