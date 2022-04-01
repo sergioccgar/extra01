@@ -14,9 +14,11 @@ public class Main {
     /**
      * Método que descompone un número en sus factores primos y agrega a estos
      * a una lista. Para cuando hay una repetición en la factorización. Devuelve
-     * false si no hay factores repetidos y true si sí los hay.
+     * false si no hay factores repetidos y true si sí los hay. Se basa en el
+     * teorema fundamental de la aritmética. Devuelve true si es It-Miha y false
+     * si no.
      *
-     * @param n Número a descomponer
+     * @param n Número a revisar.
      *
      */
     public static boolean isItMiha(long n) {
@@ -36,6 +38,28 @@ public class Main {
             }
             return t;
         }
+    }
+
+    /**
+     * Método que revisa si un número es It-Miha viendo si la operación módulo
+     * con cuadrados perfectos es 0 o no. Devuelve true si es It-Miha y false si
+     * no.
+     *
+     * @param n Número a revisar.
+     *
+     */
+    public static boolean isItMiha2(long n) {
+        boolean t = true;
+        long i = 2;
+        if (n == 1){
+            return true;
+        } else {
+            while (t == true && (i*i) <= n){
+                if (n%(i*i)==0) t = false;
+                i++;
+            }
+        }
+        return t;
     }
 
     /**
@@ -76,7 +100,7 @@ public class Main {
          List<Long> mihas = new ArrayList<Long>();
          mihas.add(Long.valueOf(-1));
          while (contador < n) {
-             if (!isItMiha(i)){
+             if (!isItMiha2(i)){
                  i++;
              } else {
                  contador++;
