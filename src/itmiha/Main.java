@@ -151,7 +151,7 @@ public class Main {
         return askedItMihas;
     }
 
-    public static void main (String args[]){
+    public static void main (String args[]) throws IOException {
         List<Integer> a = new ArrayList<Integer>();
         agregarALaLista(a);
         Integer maxMiha = getLastItMiha(a);
