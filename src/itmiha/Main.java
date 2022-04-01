@@ -13,26 +13,28 @@ public class Main {
 
     /**
      * Método que descompone un número en sus factores primos y agrega a estos
-     * a una lista.
+     * a una lista. Para cuando hay una repetición en la factorización. Devuelve
+     * false si no hay factores repetidos y true si sí los hay.
      *
      * @param n Número a descomponer
      *
      */
-    public static List<Integer> teoremaFundArim2(int n){
-        List<Integer> l = new ArrayList<Integer>();
-        int cociente = -1;
+    public static boolean isItMiha(long n) {
+        List<Long> l = new ArrayList<Long>();
+        long cociente = -1;
+        boolean t = true;
         if (n == 1){
-            l.add(1);
-            return l;
+            return true;
         } else {
-            int i = 2;
-            while (cociente != 1){
+            long i = 2;
+            while (cociente != 1 && t == true){
                 if (n%i == 0) {
                     cociente = n = n / i;
+                    if (l.contains(i)) t = false;
                     l.add(i);
                 } else i++;
             }
-            return l;
+            return t;
         }
     }
 
@@ -42,54 +44,23 @@ public class Main {
      *
      * @param a Lista vacía por llenar
      */
-    public static List agregarALaLista(List<Integer> a){
+    public static List agregarALaLista(List<Long> a){
         Scanner scn = new Scanner(System.in);
-        Integer first = Integer.parseInt(scn.nextLine());
-        Integer aux;
+        long first = Long.parseLong(scn.nextLine());
         while (scn.hasNextLine()) {
-            aux = Integer.parseInt(scn.nextLine());
-            if (!a.contains(aux)) a.add(aux);
+            a.add(Long.parseLong(scn.nextLine()));
         }
-        a.add(0,first);
         return a;
     }
 
     /**
-     * Método que ve si en una lista de enteros hay al menos una repetición.
-     *
-     * @param l Lista a revisar
-     */
-     public static boolean hayRepes(List<Integer> l){
-         Integer aux;
-         boolean repeated = false;
-         for (int i = 0; i < l.size(); i++){
-             aux = l.get(i);
-             l.remove(i);
-             repeated = l.contains(aux);
-             l.add(i,aux);
-             if (repeated == true) break;
-         }
-         return repeated;
-     }
-
-    /**
-     * Método que revisa cuál es el número It-Miha más alto que buscamos. No
-     * considera el primer número, pues es el número de casos que buscaremos.
-     * lo guardamos en una variable primero para dejar al final la lista sin
-     * cambios.
+     * Método que revisa cuál es el número It-Miha más alto que buscamos
+     * (es el último de la lista).
      *
      * @param a Lista a revisar
      */
-    public static Integer getLastItMiha(List <Integer> a){
-        if (a.size() == 1) {
-            return -1;
-        } else {
-            Integer numCasos = a.get(0);
-            a.remove(0);
-            Integer max = Collections.max(a);
-            a.add(0,numCasos);
-            return max;
-        }
+    public static long getLastItMiha(List<Long> a){
+        return a.get(a.size()-1);
     }
 
     /**
@@ -99,13 +70,13 @@ public class Main {
      *
      */
 
-     public static List<Integer> findFirstnMihas(Integer n){
-         int contador = 0;
-         int i = 1;
-         List<Integer> mihas = new ArrayList<Integer>();
-         mihas.add(-1);
+     public static List<Long> findFirstnMihas(long n){
+         long contador = 0;
+         long i = 1;
+         List<Long> mihas = new ArrayList<Long>();
+         mihas.add(Long.valueOf(-1));
          while (contador < n) {
-             if (hayRepes(teoremaFundArim2(i))){
+             if (!isItMiha(i)){
                  i++;
              } else {
                  contador++;
@@ -125,21 +96,20 @@ public class Main {
      *
      */
 
-    public static List<Integer> giveMeSumItMihas(List<Integer> l, List<Integer> m) {
-        m.remove(0);
-        List<Integer> askedItMihas = new ArrayList<Integer>();
-        for (Integer i: m){
-            askedItMihas.add(l.get(i));
+    public static List<Long> giveMeSumItMihas(List<Long> l, List<Long> m) {
+        List<Long> askedItMihas = new ArrayList<Long>();
+        for (long i: m){
+            askedItMihas.add(l.get((int)i));
         }
         return askedItMihas;
     }
 
     public static void main (String args[]) throws IOException {
-        List<Integer> a = new ArrayList<Integer>();
+        List<Long> a = new ArrayList<Long>();
         agregarALaLista(a);
-        Integer maxMiha = getLastItMiha(a);
-        List<Integer> mihas = findFirstnMihas(maxMiha);
-        List<Integer> askedItMihas = giveMeSumItMihas(mihas, a);
+        long maxMiha = getLastItMiha(a);
+        List<Long> mihas = findFirstnMihas(maxMiha);
+        List<Long> askedItMihas = giveMeSumItMihas(mihas, a);
         for (int i = 0; i < askedItMihas.size(); i++){
             System.out.println(askedItMihas.get(i));
         }
