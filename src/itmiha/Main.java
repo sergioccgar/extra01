@@ -152,6 +152,13 @@ public class Main {
     }
 
     public static void main (String args[]){
-
+        List<Integer> a = new ArrayList<Integer>();
+        agregarALaLista(a);
+        Integer maxMiha = getLastItMiha(a);
+        List<Integer> mihas = findFirstnMihas(maxMiha);
+        List<Integer> askedItMihas = giveMeSumItMihas(mihas, a);
+        for (int i = 0; i < askedItMihas.size(); i++){
+            System.out.println(askedItMihas.get(i));
+        }
     }
 }
