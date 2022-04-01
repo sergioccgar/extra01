@@ -16,31 +16,6 @@ public class Main {
      * a una lista.
      *
      * @param n Número a descomponer
-     * @param l Lista donde se guardan los factores primos
-     */
-    public static List<Integer> teoremaFundArim(int n, List<Integer> l){
-        l.clear();
-        int cociente = -1;
-        if (n == 1){
-            l.add(1);
-            return l;
-        } else {
-            int i = 2;
-            while (cociente != 1){
-                if (n%i == 0) {
-                    cociente = n = n / i;
-                    l.add(i);
-                } else i++;
-            }
-            return l;
-        }
-    }
-
-    /**
-     * Método que descompone un número en sus factores primos y agrega a estos
-     * a una lista.
-     *
-     * @param n Número a descomponer
      *
      */
     public static List<Integer> teoremaFundArim2(int n){
