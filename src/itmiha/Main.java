@@ -1,6 +1,14 @@
 import java.util.*;
 import java.io.IOException;
 
+/**
+ * Primer ejercicio extra de Laboratorio de la clase Modelado y Programación
+ *
+ * It-Miha No. 1338
+ *
+ * @author Sergio Medina Guzmán 3143232428
+ */
+
 public class Main {
 
     /**
