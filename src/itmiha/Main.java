@@ -29,17 +29,19 @@ public class Main {
     }
     /**
      * Método que agrega los números del input a una lista. No considera
-     * repeticiones.
+     * repeticiones, salvo el primer número.
      *
      * @param a Lista vacía por llenar
      */
     public static List agregarALaLista(List<Integer> a){
         Scanner scn = new Scanner(System.in);
+        Integer first = Integer.parseInt(scn.nextLine());
         Integer aux;
         do {
             aux = Integer.parseInt(scn.nextLine());
             if (!a.contains(aux)) a.add(aux);
         } while (scn.hasNextLine());
+        a.add(0,first);
         return a;
     }
 
