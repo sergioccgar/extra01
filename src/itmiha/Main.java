@@ -28,14 +28,17 @@ public class Main {
         }
     }
     /**
-     * Método que agrega los números del input a una lista
+     * Método que agrega los números del input a una lista. No considera
+     * repeticiones.
      *
      * @param a Lista vacía por llenar
      */
     public static List agregarALaLista(List<Integer> a){
         Scanner scn = new Scanner(System.in);
+        Integer aux;
         do {
-            a.add(Integer.parseInt(scn.nextLine()));
+            aux = Integer.parseInt(scn.nextLine());
+            if (!a.contains(aux)) a.add(aux);
         } while (scn.hasNextLine());
         return a;
     }
@@ -71,8 +74,8 @@ public class Main {
 
      // public static List<Integer> findMihas(Integer n, List<Integer> a, List<Integer> b){
      //     int contador = 0;
-     //     for (Integer i = 1; i <= n){
-     //         if (imt)
+     //     while (contador < n) {
+     //
      //     }
      // }
 

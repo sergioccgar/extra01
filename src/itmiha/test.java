@@ -122,6 +122,15 @@ public class test extends Main {
                 System.out.print(c.get(i) + ", ");
             }
         }
+        teoremaFundArim(234567,c);
+        System.out.println("La lista es:");
+        for (int i = 0; i < c.size(); i++){
+            if (i+1 == c.size()) {
+                System.out.println(c.get(i) + ".");
+            } else {
+                System.out.print(c.get(i) + ", ");
+            }
+        }
         // System.out.println("Los números It-Miha que buscas son:");
         // List<Integer> c = new ArrayList<Integer>();
         // c.add(1);
