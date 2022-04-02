@@ -12,33 +12,41 @@ import java.io.IOException;
 public class Main {
 
     /**
-     * Método que descompone un número en sus factores primos y agrega a estos
-     * a una lista. Para cuando hay una repetición en la factorización. Devuelve
-     * false si no hay factores repetidos y true si sí los hay. Se basa en el
-     * teorema fundamental de la aritmética. Devuelve true si es It-Miha y false
-     * si no.
+     * Método que calcula los primeros ? cuadrados perfectos.
+     *
+     * @param l Lista donde se guardarán los cuadrados perfectos.
+     */
+    public static List<Long> findSquares(List<Long> l) {
+        long k;
+        long fi = 2000000;
+        for (long i = 2; i <= fi; i++){
+            k = Long.valueOf(i);
+            l.add(k*k);
+        }
+        return l;
+    }
+
+    /**
+     * Método que revisa si un número es It-Miha, viendo si es divisible
+     * por alguno de los cuadrados perfectos almacenados en una lista.
      *
      * @param n Número a revisar.
+     * @param squares Lista con cuadrados perfectos.
      *
      */
-    public static boolean isItMiha(long n) {
+    public static boolean isItMiha(long n, List<Long> squares) {
         List<Long> l = new ArrayList<Long>();
-        long cociente = -1;
         boolean t = true;
-        if (n == 1){
-            return true;
-        } else {
-            long i = 2;
-            while (cociente != 1 && t == true){
-                if (n%i == 0) {
-                    cociente = n = n / i;
-                    if (l.contains(i)) t = false;
-                    l.add(i);
-                } else i++;
-            }
+        if (n == 1 || n == 2 || n == 3){
             return t;
+        } else {
+            for (long i: squares) {
+                if (n%i == 0) t = false;
+                if (t == false) break;
+            }
         }
-    }
+        return t;
+        }
 
     /**
      * Método que revisa si un número es It-Miha viendo si la operación módulo
@@ -94,13 +102,13 @@ public class Main {
      *
      */
 
-     public static List<Long> findFirstnMihas(long n){
+     public static List<Long> findFirstnMihas(long n, List<Long> l){
          long contador = 0;
          long i = 1;
          List<Long> mihas = new ArrayList<Long>();
          mihas.add(Long.valueOf(-1));
          while (contador < n) {
-             if (!isItMiha2(i)){
+             if (!isItMiha(i,l)){
                  i++;
              } else {
                  contador++;
@@ -130,9 +138,12 @@ public class Main {
 
     public static void main (String args[]) throws IOException {
         List<Long> a = new ArrayList<Long>();
+        List<Long> squares = new ArrayList <Long>();
+        findSquares(squares);
+        System.out.println("k");
         agregarALaLista(a);
         long maxMiha = getLastItMiha(a);
-        List<Long> mihas = findFirstnMihas(maxMiha);
+        List<Long> mihas = findFirstnMihas(maxMiha, squares);
         List<Long> askedItMihas = giveMeSumItMihas(mihas, a);
         for (int i = 0; i < askedItMihas.size(); i++){
             System.out.println(askedItMihas.get(i));

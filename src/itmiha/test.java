@@ -51,8 +51,10 @@ public class test extends Main {
         //         System.out.print(finale.get(i) + ", ");
         //     }
         // }
-        System.out.println(isItMiha(10));
-        List<Long> firstN = findFirstnMihas(10);
+        List<Long> squares = new ArrayList<Long>();
+        findSquares(squares);
+        System.out.println(isItMiha(10, squares));
+        List<Long> firstN = findFirstnMihas(10, squares);
         List<Long> finale = giveMeSumItMihas(firstN,mix);
         for (int i = 0; i < finale.size(); i++){
             if (i+1 == finale.size()) {
