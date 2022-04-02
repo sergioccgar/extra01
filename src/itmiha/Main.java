@@ -40,8 +40,8 @@ public class Main {
         if (n == 1 || n == 2 || n == 3){
             return t;
         } else {
-            for (long i: squares) {
-                if (n%i == 0) t = false;
+            for (long i = 0; i < squares.size(); i++) {
+                if (n%squares.get((int)i) == 0) t = false;
                 if (t == false) break;
             }
         }
